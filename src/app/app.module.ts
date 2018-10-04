@@ -17,6 +17,24 @@ import { Code3Page } from '../pages/code3/code3';
 import { Code4Page } from '../pages/code4/code4';
 import { Code5Page } from '../pages/code5/code5';
 import { Code6Page } from '../pages/code6/code6';
+import { AngularFireModule } from '@angular/fire';
+
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { S1code1Provider } from '../providers/s1code1/s1code1';
+import { Block2serviceProvider } from '../providers/block2service/block2service';
+
+
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyAqPcDaCrzsm3z6ta_6Dz8blqa-61IYNPE",
+    authDomain: "myionic2-b60da.firebaseapp.com",
+    databaseURL: "https://myionic2-b60da.firebaseio.com",
+    projectId: "myionic2-b60da",
+    storageBucket: "myionic2-b60da.appspot.com",
+    messagingSenderId: "284321010572"
+};
+
+
 
 @NgModule({
   declarations: [
@@ -34,7 +52,10 @@ import { Code6Page } from '../pages/code6/code6';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,7 +74,9 @@ import { Code6Page } from '../pages/code6/code6';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    S1code1Provider,
+    Block2serviceProvider
   ]
 })
 export class AppModule {}

@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController  } from 'ionic-angular';
+import { Locations} from  '../../model/locations';
+import {S1code1Provider} from '../../providers/s1code1/s1code1'
+import { ContactPage } from '../contact/contact';
 
 /**
  * Generated class for the Code3Page page.
@@ -15,11 +18,42 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Code3Page {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  locations:Locations={
+    latitude:'',
+    longitude:'',
+    info:''
+  }
+
+  constructor(public navCtrl: NavController,
+     public navParams: NavParams,
+     public s1code1Provider: S1code1Provider,
+     public alertCtrl: AlertController ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Code3Page');
   }
+
+  addlocations(locations:Locations){
+    this.s1code1Provider.addlocations(locations).then(ref =>{
+    this.showAlert()
+    this.navCtrl.pop()
+
+    })
+  }
+
+
+
+
+  showAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'New Friend!',
+      subTitle: ' just accepted your friend request!',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+
 
 }
