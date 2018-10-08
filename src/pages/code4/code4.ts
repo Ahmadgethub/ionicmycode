@@ -34,8 +34,8 @@ export class Code4Page {
     console.log('ionViewDidLoad Code4Page');
   }
   
-  addlocations(locations:Locations){
-    this.block2serviceProvider.addlocations(locations).then(ref =>{
+  addLocation(locations:Locations){
+    this.block2serviceProvider.addLocation(locations).then(ref =>{
     this.showAlert()
     this.navCtrl.pop()
     })

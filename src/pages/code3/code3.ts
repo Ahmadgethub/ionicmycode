@@ -34,8 +34,8 @@ export class Code3Page {
     console.log('ionViewDidLoad Code3Page');
   }
 
-  addlocations(locations:Locations){
-    this.s1code1Provider.addlocations(locations).then(ref =>{
+  addLocation(locations:Locations){
+    this.s1code1Provider.addLocation(locations).then(ref =>{
     this.showAlert()
     this.navCtrl.pop()
 
